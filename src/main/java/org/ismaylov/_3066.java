@@ -24,22 +24,18 @@ public class _3066 {
             return resultCount;
         }
 
-        PriorityQueue<Long> cachedNums = new PriorityQueue<>(Arrays.stream(nums)
-                .mapToLong(Long::valueOf)
-                .boxed()
-                .collect(Collectors.toList()));
+        PriorityQueue<Long> cachedNums = new PriorityQueue<>();
+
+        for (int i = 0; i < n; i++) {
+            cachedNums.add((long) nums[i]);
+        }
 
         while (cachedNums.peek() < k) {
-
             long num = cachedNums.poll();
 
             cachedNums.add(num * 2 + cachedNums.poll());
             resultCount++;
-
         }
-
         return resultCount;
-
-
     }
 }
