@@ -24,7 +24,7 @@ public class _1261 {
         }
 
         private void recover(TreeNode node, int val) {
-            if (node == null) return;
+            if (Objects.isNull(node)) return;
             node.val = val;
             values.add(val);
             if (Objects.nonNull(node.left)) {
