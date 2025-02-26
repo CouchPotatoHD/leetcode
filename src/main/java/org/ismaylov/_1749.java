@@ -13,28 +13,20 @@ public class _1749 {
 
     public int maxAbsoluteSum(int[] nums) {
 
-        int maxResult = nums[0];
-        int minResult = nums[0];
-        int maxSum = nums[0];
-        int minSum = nums[0];
+        int maxSum = 0;
+        int minSum = 0;
+        int result = 0;
 
-        // first run of the Kadane's Algorithm
-        for (int i = 1; i < nums.length; i++) {
+        // only first run of the Kadane's Algorithm
+        for (int num : nums) {
 
-            maxSum = Math.max(maxSum + nums[i], nums[i]);
-            maxResult = Math.max(maxResult, maxSum);
+            result += num;
 
+            maxSum = Math.max(result, maxSum);
+            minSum = Math.min(result, minSum);
         }
 
-        // second run of the Kadane's Algorithm
-        for (int i = 1; i < nums.length; i++) {
-
-            minSum = Math.min(minSum + nums[i], nums[i]);
-            minResult = Math.min(minResult, minSum);
-
-        }
-
-        return Math.max(Math.abs(maxResult), Math.abs(minResult));
+        return Math.abs(maxSum - minSum);
 
     }
 }
